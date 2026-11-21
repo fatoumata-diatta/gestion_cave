@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 860" width="1240" height="860" font-family="Inter, 'DejaVu Sans', Arial, sans-serif" role="img" aria-label="Modèle conceptuel de données de la gestion de cave">
+<rect width="1240" height="860" fill="#f7f9f6"/>
+<text x="30" y="42" font-size="22" font-weight="600" fill="#12332d" text-anchor="start">Gestion de cave : modèle conceptuel de données (MCD)</text>
+<text x="30" y="66" font-size="13" font-weight="400" fill="#46544f" text-anchor="start">Notation Merise. L'identifiant de chaque entité est souligné. Une cardinalité (min,max) se lit du côté de l'entité à laquelle elle est collée.</text>
+<rect x="30" y="110" width="220" height="166" rx="6" fill="#fff" stroke="#12332d" stroke-width="2"/>
+<path d="M30,144 V116 Q30,110 36,110 H244 Q250,110 250,116 V144 Z" fill="#12332d"/>
+<text x="140.0" y="133" font-size="15" font-weight="600" fill="#fff" text-anchor="middle">CLIENT</text>
+<text x="46" y="172" font-size="14" font-weight="400" fill="#17221f" text-anchor="start" text-decoration="underline">id</text>
+<text x="46" y="196" font-size="14" font-weight="400" fill="#17221f" text-anchor="start">nom</text>
+<text x="46" y="220" font-size="14" font-weight="400" fill="#17221f" text-anchor="start">type_client</text>
+<text x="46" y="244" font-size="14" font-weight="400" fill="#17221f" text-anchor="start">email</text>
+<text x="46" y="268" font-size="14" font-weight="400" fill="#17221f" text-anchor="start">ville</text>
+<rect x="290.0" y="170" width="110" height="40" rx="20" fill="#f6e9ee" stroke="#7a1f3d" stroke-width="2"/>
+<text x="345" y="195" font-size="14" font-weight="600" fill="#7a1f3d" text-anchor="middle">PASSER</text>
+<rect x="440" y="110" width="220" height="118" rx="6" fill="#fff" stroke="#12332d" stroke-width="2"/>
+<path d="M440,144 V116 Q440,110 446,110 H654 Q660,110 660,116 V144 Z" fill="#12332d"/>
+<text x="550.0" y="133" font-size="15" font-weight="600" fill="#fff" text-anchor="middle">COMMANDE</text>
+<text x="456" y="172" font-size="14" font-weight="400" fill="#17221f" text-anchor="start" text-decoration="underline">id</text>
+<text x="456" y="196" font-size="14" font-weight="400" fill="#17221f" text-anchor="start">date_commande</text>
+<text x="456" y="220" font-size="14" font-weight="400" fill="#17221f" text-anchor="start">statut</text>
+<rect x="720.0" y="170" width="150" height="84" rx="14" fill="#f6e9ee" stroke="#7a1f3d" stroke-width="2"/>
+<text x="795" y="195" font-size="14" font-weight="600" fill="#7a1f3d" text-anchor="middle">CONTENIR</text>
+<line x1="730.0" x2="860.0" y1="206" y2="206" stroke="#7a1f3d" stroke-width="1"/>
+<text x="795" y="226" font-size="13" font-weight="400" fill="#17221f" text-anchor="middle">quantite</text>
+<text x="795" y="248" font-size="13" font-weight="400" fill="#17221f" text-anchor="middle">prix_unitaire</text>
+<rect x="930" y="110" width="220" height="190" rx="6" fill="#fff" stroke="#12332d" stroke-width="2"/>
+<path d="M930,144 V116 Q930,110 936,110 H1144 Q1150,110 1150,116 V144 Z" fill="#12332d"/>
+<text x="1040.0" y="133" font-size="15" font-weight="600" fill="#fff" text-anchor="middle">CUVEE</text>
+<text x="946" y="172" font-size="14" font-weight="400" fill="#17221f" text-anchor="start" text-decoration="underline">id</text>
+<text x="946" y="196" font-size="14" font-weight="400" fill="#17221f" text-anchor="start">nom</text>
+<text x="946" y="220" font-size="14" font-weight="400" fill="#17221f" text-anchor="start">millesime</text>
+<text x="946" y="244" font-size="14" font-weight="400" fill="#17221f" text-anchor="start">couleur</text>
+<text x="946" y="268" font-size="14" font-weight="400" fill="#17221f" text-anchor="start">degre</text>
+<text x="946" y="292" font-size="14" font-weight="400" fill="#17221f" text-anchor="start">prix_vente</text>
+<polyline points="250,190 290,190" fill="none" stroke="#46544f" stroke-width="1.6"/>
+<rect x="249" y="165" width="42" height="20" rx="4" fill="#fff"/>
+<text x="270" y="180" font-size="13" font-weight="600" fill="#17221f" text-anchor="middle">0,N</text>
+<polyline points="400,190 440,190" fill="none" stroke="#46544f" stroke-width="1.6"/>
+<rect x="399" y="165" width="42" height="20" rx="4" fill="#fff"/>
+<text x="420" y="180" font-size="13" font-weight="600" fill="#17221f" text-anchor="middle">1,1</text>
+<polyline points="660,190 720,190" fill="none" stroke="#46544f" stroke-width="1.6"/>
+<rect x="669" y="165" width="42" height="20" rx="4" fill="#fff"/>
+<text x="690" y="180" font-size="13" font-weight="600" fill="#17221f" text-anchor="middle">1,N</text>
+<polyline points="870,190 930,190" fill="none" stroke="#46544f" stroke-width="1.6"/>
+<rect x="879" y="165" width="42" height="20" rx="4" fill="#fff"/>
+<text x="900" y="180" font-size="13" font-weight="600" fill="#17221f" text-anchor="middle">0,N</text>
+<rect x="980.0" y="380" width="120" height="40" rx="20" fill="#f6e9ee" stroke="#7a1f3d" stroke-width="2"/>
+<text x="1040" y="405" font-size="14" font-weight="600" fill="#7a1f3d" text-anchor="middle">POSSEDER</text>
+<rect x="930" y="500" width="220" height="118" rx="6" fill="#fff" stroke="#12332d" stroke-width="2"/>
+<path d="M930,534 V506 Q930,500 936,500 H1144 Q1150,500 1150,506 V534 Z" fill="#12332d"/>
+<text x="1040.0" y="523" font-size="15" font-weight="600" fill="#fff" text-anchor="middle">STOCK</text>
+<text x="946" y="562" font-size="14" font-weight="400" fill="#17221f" text-anchor="start" text-decoration="underline">id</text>
+<text x="946" y="586" font-size="14" font-weight="400" fill="#17221f" text-anchor="start">quantite</text>
+<text x="946" y="610" font-size="14" font-weight="400" fill="#17221f" text-anchor="start">seuil_alerte</text>
+<polyline points="1040,300 1040,380" fill="none" stroke="#46544f" stroke-width="1.6"/>
+<rect x="1043" y="313" width="42" height="20" rx="4" fill="#fff"/>
+<text x="1064" y="328" font-size="13" font-weight="600" fill="#17221f" text-anchor="middle">1,1</text>
+<polyline points="1040,420 1040,500" fill="none" stroke="#46544f" stroke-width="1.6"/>
+<rect x="1043" y="463" width="42" height="20" rx="4" fill="#fff"/>
+<text x="1064" y="478" font-size="13" font-weight="600" fill="#17221f" text-anchor="middle">1,1</text>
+<rect x="440" y="540" width="240" height="166" rx="6" fill="#fff" stroke="#12332d" stroke-width="2"/>
+<path d="M440,574 V546 Q440,540 446,540 H674 Q680,540 680,546 V574 Z" fill="#12332d"/>
+<text x="560.0" y="563" font-size="15" font-weight="600" fill="#fff" text-anchor="middle">MOUVEMENT_STOCK</text>
+<text x="456" y="602" font-size="14" font-weight="400" fill="#17221f" text-anchor="start" text-decoration="underline">id</text>
+<text x="456" y="626" font-size="14" font-weight="400" fill="#17221f" text-anchor="start">date_mouvement</text>
+<text x="456" y="650" font-size="14" font-weight="400" fill="#17221f" text-anchor="start">quantite</text>
+<text x="456" y="674" font-size="14" font-weight="400" fill="#17221f" text-anchor="start">type_mouvement</text>
+<text x="456" y="698" font-size="14" font-weight="400" fill="#17221f" text-anchor="start">motif</text>
+<rect x="490.0" y="380" width="120" height="40" rx="20" fill="#f6e9ee" stroke="#7a1f3d" stroke-width="2"/>
+<text x="550" y="405" font-size="14" font-weight="600" fill="#7a1f3d" text-anchor="middle">GENERER</text>
+<polyline points="550,228 550,380" fill="none" stroke="#46544f" stroke-width="1.6"/>
+<rect x="553" y="241" width="42" height="20" rx="4" fill="#fff"/>
+<text x="574" y="256" font-size="13" font-weight="600" fill="#17221f" text-anchor="middle">1,N</text>
+<polyline points="550,420 550,540" fill="none" stroke="#46544f" stroke-width="1.6"/>
+<rect x="553" y="503" width="42" height="20" rx="4" fill="#fff"/>
+<text x="574" y="518" font-size="13" font-weight="600" fill="#17221f" text-anchor="middle">0,1</text>
+<rect x="740.0" y="600" width="130" height="40" rx="20" fill="#f6e9ee" stroke="#7a1f3d" stroke-width="2"/>
+<text x="805" y="625" font-size="14" font-weight="600" fill="#7a1f3d" text-anchor="middle">CONCERNER</text>
+<polyline points="960,300 960,345 805,345 805,600" fill="none" stroke="#46544f" stroke-width="1.6"/>
+<rect x="965" y="313" width="42" height="20" rx="4" fill="#fff"/>
+<text x="986" y="328" font-size="13" font-weight="600" fill="#17221f" text-anchor="middle">0,N</text>
+<polyline points="740,620 680,620" fill="none" stroke="#46544f" stroke-width="1.6"/>
+<rect x="683" y="595" width="42" height="20" rx="4" fill="#fff"/>
+<text x="704" y="610" font-size="13" font-weight="600" fill="#17221f" text-anchor="middle">1,1</text>
+<text x="30" y="742" font-size="14" font-weight="600" fill="#12332d" text-anchor="start">Comment lire le schéma</text>
+<text x="30" y="768" font-size="12" font-weight="400" fill="#17221f" text-anchor="start">PASSER : un client passe 0 à N commandes ; une commande est passée par 1 seul client.</text>
+<text x="30" y="788" font-size="12" font-weight="400" fill="#17221f" text-anchor="start">CONTENIR : une commande a 1 à N lignes (jamais vide) ; une cuvée est dans 0 à N commandes.</text>
+<text x="30" y="808" font-size="12" font-weight="400" fill="#17221f" text-anchor="start">CONTENIR porte les attributs quantite et prix_unitaire : elle devient la table LIGNE_COMMANDE.</text>
+<text x="30" y="828" font-size="12" font-weight="400" fill="#17221f" text-anchor="start">POSSEDER : une cuvée a un seul stock ; un stock concerne une seule cuvée (relation 1-1).</text>
+<text x="630" y="768" font-size="12" font-weight="400" fill="#17221f" text-anchor="start">CONCERNER : un mouvement concerne 1 seule cuvée ; une cuvée a 0 à N mouvements.</text>
+<text x="630" y="788" font-size="12" font-weight="400" fill="#17221f" text-anchor="start">GENERER : une commande génère 1 à N mouvements (sorties, ou entrées si annulée) ;</text>
+<text x="630" y="808" font-size="12" font-weight="400" fill="#17221f" text-anchor="start">un mouvement vient de 0 ou 1 commande (0 pour une mise en bouteille).</text>
+</svg>
