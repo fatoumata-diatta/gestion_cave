@@ -1,0 +1,9 @@
+﻿Nom;Type de client;E-mail;Ville
+Atelier des Vignes;pro;atelier.vignes@example.org;Colmar
+Paul Renard;particulier;paul.renard@example.com;Metz
+Sophie Lambert;particulier;sophie.lambert@example.com;Nantes
+Clara Dubois;particulier;clara.dubois.example.com;Pau
+;pro;sans.nom@example.org;Rouen
+Épicerie du Port;grossiste;port@example.org;Brest
+Lucie Bernard;particulier;lucie.bernard@example.com;Angers
+Paul Renard (doublon);particulier;paul.renard@example.com;Metz
