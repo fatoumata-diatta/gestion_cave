@@ -1,0 +1,461 @@
+/* =====================================================================
+   Cave & Domaine : feuille de style
+   Aucune dépendance externe : les polices sont dans assets/fonts/
+   (IBM Plex Sans pour l'interface, Libre Caslon Text pour les titres).
+
+   Palette
+     verre  : vert bouteille, barre latérale et titres
+     lie    : bordeaux, actions et données
+     craie  : fond de page, légèrement verdâtre
+     or     : doré d'étiquette, un seul repère dans la navigation
+   ===================================================================== */
+
+@font-face { font-family: "IBM Plex Sans"; font-weight: 400; font-style: normal; font-display: swap;
+  src: url("../fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 500; font-style: normal; font-display: swap;
+  src: url("../fonts/ibm-plex-sans-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Sans"; font-weight: 600; font-style: normal; font-display: swap;
+  src: url("../fonts/ibm-plex-sans-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Libre Caslon Text"; font-weight: 700; font-style: normal; font-display: swap;
+  src: url("../fonts/libre-caslon-text-latin-700-normal.woff2") format("woff2"); }
+
+:root {
+  --verre: #12332d;
+  --verre-clair: #1d4a41;
+  --verre-texte: #d3e2db;
+  --verre-discret: #9db8ad;
+  --or: #d6b36a;
+
+  --lie: #7a1f3d;
+  --lie-fonce: #5e1730;
+  --lie-pale: #f6e9ee;
+
+  --craie: #f1f3f0;
+  --papier: #ffffff;
+  --trait: #dce1dc;
+  --trait-fort: #b9c3bc;
+
+  --encre: #17221f;
+  --encre-2: #46544f;
+  --encre-3: #5b6964;
+
+  --ok: #006300;
+  --ok-fond: #e5f3e5;
+  --alerte: #fab219;
+  --alerte-fond: #fff2cf;
+  --alerte-texte: #664400;
+  --critique: #d03b3b;
+  --critique-fond: #fce9e9;
+  --critique-texte: #8a1c1c;
+
+  --police: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --police-titre: "Libre Caslon Text", Georgia, "Times New Roman", serif;
+  --rayon: 4px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--craie);
+  color: var(--encre);
+  font: 400 0.9375rem/1.55 var(--police);
+}
+
+h1, h2, h3, p, ul, ol, figure { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+img, svg { display: block; max-width: 100%; }
+a { color: var(--lie); text-underline-offset: 0.18em; }
+a:hover { color: var(--lie-fonce); }
+
+:focus-visible { outline: 2px solid var(--lie); outline-offset: 2px; }
+
+.sr-only {
+  /* left: 0 : sans lui, un texte caché placé dans la dernière colonne d'un tableau large
+     créerait un défilement horizontal de toute la page */
+  position: absolute; left: 0; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+.lien-evitement {
+  position: absolute; left: 0.75rem; top: -4rem; z-index: 100;
+  background: var(--papier); padding: 0.5rem 0.9rem; border-radius: var(--rayon);
+}
+.lien-evitement:focus { top: 0.75rem; }
+
+/* ---------------------------------------------------------------------
+   Structure : barre latérale + contenu
+   --------------------------------------------------------------------- */
+.structure { display: grid; grid-template-columns: 16.5rem minmax(0, 1fr); min-height: 100vh; }
+
+.barre-laterale {
+  position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  display: flex; flex-direction: column; gap: 1.75rem;
+  padding: 1.6rem 0.9rem 1rem;
+  background: var(--verre); color: var(--verre-texte);
+}
+.barre-laterale :focus-visible { outline-color: #fff; }
+
+.marque { display: block; padding: 0 0.6rem; text-decoration: none; color: #fff; }
+.marque:hover { color: #fff; }
+.marque-nom { display: block; font: 700 1.5rem/1.1 var(--police-titre); letter-spacing: 0.005em; }
+.marque-sous { display: block; margin-top: 0.4rem; font-size: 0.8125rem; line-height: 1.4; color: var(--verre-discret); }
+
+.menu { display: flex; flex-direction: column; gap: 1.25rem; flex: 1; }
+.menu-titre { padding: 0 0.6rem 0.3rem; font-size: 0.8125rem; color: var(--verre-discret); }
+.menu a {
+  display: flex; align-items: center; gap: 0.65rem;
+  padding: 0.5rem 0.6rem; border-radius: var(--rayon);
+  color: var(--verre-texte); text-decoration: none;
+}
+.menu a:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+.menu a[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.13); color: #fff; font-weight: 500;
+  box-shadow: inset 3px 0 0 var(--or);
+}
+.icone { flex: none; }
+
+.utilisateur {
+  display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+  padding: 0.9rem 0.6rem 0; border-top: 1px solid rgba(255, 255, 255, 0.14);
+  font-size: 0.875rem;
+}
+.utilisateur-nom { color: #fff; font-weight: 500; }
+.lien-bouton {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  padding: 0.25rem 0.4rem; border: 0; border-radius: var(--rayon);
+  background: none; color: inherit; font: inherit; cursor: pointer;
+}
+.utilisateur .lien-bouton { color: var(--verre-texte); }
+.utilisateur .lien-bouton:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
+
+.contenu { padding: 2.1rem 2.6rem 4.5rem; max-width: 84rem; width: 100%; }
+
+.entete-page {
+  display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
+  gap: 1rem 2rem; margin-bottom: 1.75rem;
+}
+.entete-page h1 { font: 700 1.875rem/1.15 var(--police-titre); color: var(--verre); }
+.description { margin-top: 0.4rem; max-width: 62ch; color: var(--encre-2); }
+.entete-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+/* ---------------------------------------------------------------------
+   Boutons et liens d'action
+   --------------------------------------------------------------------- */
+.bouton {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  min-height: 2.5rem; padding: 0.5rem 1.05rem;
+  border: 1px solid var(--lie); border-radius: var(--rayon);
+  background: var(--lie); color: #fff;
+  font: 500 0.9375rem/1.2 var(--police); text-decoration: none; cursor: pointer;
+}
+.bouton:hover { background: var(--lie-fonce); border-color: var(--lie-fonce); color: #fff; }
+.bouton-secondaire { background: var(--papier); color: var(--lie); }
+.bouton-secondaire:hover { background: var(--lie-pale); color: var(--lie-fonce); }
+.bouton-danger { background: var(--papier); border-color: var(--critique-texte); color: var(--critique-texte); }
+.bouton-danger:hover { background: var(--critique-fond); border-color: var(--critique-texte); color: var(--critique-texte); }
+.bouton-petit { min-height: 2rem; padding: 0.25rem 0.7rem; font-size: 0.875rem; }
+
+.actions-ligne { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.4rem; }
+.actions-ligne form { margin: 0; }
+
+/* ---------------------------------------------------------------------
+   Messages
+   --------------------------------------------------------------------- */
+.alerte {
+  display: flex; gap: 0.75rem; align-items: flex-start;
+  margin-bottom: 1.25rem; padding: 0.8rem 1rem; max-width: 52rem;
+  border: 1px solid; border-radius: var(--rayon);
+}
+.alerte .icone { margin-top: 0.15rem; }
+.alerte-succes { background: var(--ok-fond); border-color: #9fd09f; color: #064006; }
+.alerte-erreur { background: var(--critique-fond); border-color: #e6a3a3; color: var(--critique-texte); }
+.alerte-info { background: #eaeeec; border-color: var(--trait-fort); color: var(--encre-2); }
+.alerte-titre { font-weight: 600; }
+.alerte ul { margin-top: 0.3rem; padding-left: 1.1rem; list-style: disc; }
+
+/* ---------------------------------------------------------------------
+   Formulaires
+   --------------------------------------------------------------------- */
+.formulaire { max-width: 46rem; }
+.grille-formulaire { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1.1rem 1.4rem; }
+.grille-formulaire .pleine-largeur { grid-column: 1 / -1; }
+
+.champ { display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; }
+.champ label { font-weight: 500; }
+.champ input, .champ select, .champ textarea {
+  width: 100%; min-height: 2.5rem; padding: 0.5rem 0.7rem;
+  border: 1px solid var(--trait-fort); border-radius: var(--rayon);
+  background: var(--papier); color: var(--encre); font: inherit;
+}
+.champ input:hover, .champ select:hover { border-color: var(--encre-3); }
+.champ input:focus-visible, .champ select:focus-visible { outline: 2px solid var(--lie); outline-offset: 0; border-color: var(--lie); }
+.champ-invalide input, .champ-invalide select { border-color: var(--critique-texte); background: #fffafa; }
+.aide { font-size: 0.8125rem; color: var(--encre-3); }
+.erreur-champ { font-size: 0.8125rem; font-weight: 500; color: var(--critique-texte); }
+.barre-boutons { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.6rem; }
+
+/* Filtres au-dessus d'une liste : une seule rangée */
+.filtres {
+  display: flex; flex-wrap: wrap; align-items: flex-end; gap: 0.8rem 1rem;
+  margin-bottom: 1.1rem;
+}
+.filtres .champ { min-width: 10rem; }
+.filtres .champ-large { flex: 1 1 16rem; max-width: 24rem; }
+.filtres .case { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.5rem; font-weight: 400; }
+.filtres input[type="checkbox"] { width: 1.1rem; min-height: 0; height: 1.1rem; accent-color: var(--lie); }
+
+/* ---------------------------------------------------------------------
+   Tableaux
+   --------------------------------------------------------------------- */
+.defilement { position: relative; overflow-x: auto; }
+
+.tableau {
+  width: 100%; border-collapse: collapse;
+  background: var(--papier); border: 1px solid var(--trait);
+}
+.tableau th {
+  padding: 0.65rem 0.9rem; text-align: left; vertical-align: bottom;
+  font-size: 0.8125rem; font-weight: 500; color: var(--encre-2);
+  background: #f9faf8; border-bottom: 2px solid var(--verre); white-space: nowrap;
+}
+.tableau td { padding: 0.65rem 0.9rem; vertical-align: middle; border-bottom: 1px solid var(--trait); }
+.tableau tbody tr:last-child td { border-bottom: 0; }
+.tableau tbody tr:hover { background: #f8faf7; }
+.tableau .nombre, .nombre { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tableau .centre { text-align: center; }
+.tableau .nom { font-weight: 500; }
+.tableau .discret { color: var(--encre-3); }
+.tableau tfoot td {
+  border-top: 3px double var(--encre); border-bottom: 0;
+  font-weight: 600; background: #f9faf8;
+}
+.vide { padding: 2.2rem 1rem; text-align: center; color: var(--encre-2); background: var(--papier); border: 1px dashed var(--trait-fort); }
+.vide p + p { margin-top: 0.5rem; }
+.legende-tableau { margin-top: 0.7rem; font-size: 0.8125rem; color: var(--encre-3); }
+
+/* Pastilles, badges */
+.puce-vin { display: inline-flex; align-items: center; gap: 0.45rem; white-space: nowrap; }
+.puce-point { width: 0.7rem; height: 0.7rem; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.28); }
+.puce-rouge .puce-point { background: #8e1b3a; }
+.puce-blanc .puce-point { background: #ebdc8c; }
+.puce-rose .puce-point { background: #eaa3b3; }
+.puce-effervescent .puce-point { background: #cfd9b8; }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 0.35rem; white-space: nowrap;
+  padding: 0.1rem 0.6rem 0.1rem 0.5rem; border-radius: 999px;
+  font-size: 0.8125rem; font-weight: 500;
+}
+.badge-ok { background: var(--ok-fond); color: var(--ok); padding-left: 0.6rem; }
+.badge-neutre { background: #e8ebe8; color: var(--encre-2); padding-left: 0.6rem; }
+.badge-alerte { background: var(--alerte-fond); color: var(--alerte-texte); }
+.badge-critique { background: var(--critique-fond); color: var(--critique-texte); }
+.badge-pro { background: var(--lie-pale); color: var(--lie-fonce); padding-left: 0.6rem; }
+
+/* Jauge de stock : la barre = la quantité, le trait = le seuil d'alerte */
+.jauge { position: relative; display: block; width: 100%; min-width: 7rem; height: 0.5rem; background: #e4e9e5; border-radius: 4px; }
+.jauge-barre { position: absolute; top: 0; bottom: 0; left: 0; border-radius: 0 4px 4px 0; background: #3b7566; }
+.jauge-bas .jauge-barre { background: var(--alerte); }
+.jauge-rupture .jauge-barre { background: var(--critique); }
+.jauge-seuil { position: absolute; top: -4px; bottom: -4px; width: 2px; margin-left: -1px; background: var(--encre); border-radius: 1px; }
+
+/* ---------------------------------------------------------------------
+   Blocs et tableau de bord
+   --------------------------------------------------------------------- */
+.bloc { position: relative; overflow-x: auto; background: var(--papier); border: 1px solid var(--trait); border-radius: 6px; padding: 1.2rem 1.4rem 1.4rem; }
+.bloc-entete { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.3rem 1rem; margin-bottom: 0.9rem; }
+.bloc h2 { font-size: 1.0625rem; font-weight: 600; color: var(--verre); }
+.bloc-note { font-size: 0.8125rem; color: var(--encre-3); }
+.bloc .tableau { border: 0; }
+.bloc .tableau th { background: transparent; }
+.bloc .tableau tfoot td { background: transparent; }
+.tableau-compact th, .tableau-compact td { padding-left: 0.6rem; padding-right: 0.6rem; }
+.tableau-compact th:first-child, .tableau-compact td:first-child { padding-left: 0; }
+.tableau-compact th:last-child, .tableau-compact td:last-child { padding-right: 0; }
+.bloc-etroit { max-width: 62rem; }
+.bloc-suivant { margin-top: 1.5rem; }
+.note-prix { display: block; font-size: 0.75rem; font-weight: 400; color: var(--encre-3); }
+
+/* Bandeau d'indicateurs : le chiffre d'affaires en grand à gauche, quatre repères à droite (2 x 2) */
+.synthese {
+  display: grid; grid-template-columns: minmax(0, 1.15fr) repeat(2, minmax(0, 1fr));
+  margin-bottom: 2rem; background: var(--papier); border: 1px solid var(--trait); border-radius: 6px;
+}
+.synthese > div { padding: 1.3rem 1.5rem; }
+.synthese > .indic-principal {
+  grid-row: 1 / span 2; display: flex; flex-direction: column; justify-content: center;
+  border-right: 1px solid var(--trait);
+}
+.synthese > div:nth-child(n + 4) { border-top: 1px solid var(--trait); }
+.synthese > div:nth-child(2n + 1):not(.indic-principal) { border-left: 1px solid var(--trait); }
+.indic-libelle { font-size: 0.875rem; color: var(--encre-2); }
+.indic-hero { margin-top: 0.4rem; font-size: clamp(2.5rem, 7vw, 3.5rem); font-weight: 600; line-height: 1; letter-spacing: -0.02em; color: var(--lie); }
+.indic-valeur { margin-top: 0.4rem; font-size: 1.75rem; font-weight: 600; line-height: 1.1; letter-spacing: -0.01em; }
+.indic-detail { margin-top: 0.45rem; font-size: 0.8125rem; color: var(--encre-3); }
+.indic-detail .badge { margin-top: 0.1rem; }
+
+.tableau-bord { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 1.75rem; align-items: start; }
+.colonne { display: flex; flex-direction: column; gap: 1.75rem; min-width: 0; }
+.pleine-ligne { grid-column: 1 / -1; }
+
+/* Classement : une ligne = un nom, une barre, un montant */
+.classement { width: 100%; border-collapse: collapse; }
+.classement th { padding: 0 0.6rem 0.45rem; text-align: left; font-size: 0.8125rem; font-weight: 500; color: var(--encre-3); border-bottom: 1px solid var(--trait); }
+.classement td { padding: 0.32rem 0.6rem; vertical-align: middle; }
+.classement tbody tr:hover { background: #f8faf7; }
+.classement .intitule { width: 45%; line-height: 1.25; }
+.classement .intitule small { display: block; color: var(--encre-3); font-size: 0.8125rem; }
+.classement .piste { width: 24%; }
+.classement .nombre { width: 15.5%; }
+.barre-donnee { display: block; height: 0.75rem; border-radius: 0 4px 4px 0; background: var(--lie); min-width: 2px; }
+.barre-donnee.nulle { background: transparent; }
+.classement tr:hover .barre-donnee, .barre-donnee:focus-visible { filter: brightness(1.22); }
+
+/* Histogramme du chiffre d'affaires mensuel (SVG) */
+.histogramme { width: 100%; height: auto; overflow: visible; }
+.histogramme .grille { stroke: #e7ebe7; stroke-width: 1; }
+.histogramme .base { stroke: var(--trait-fort); stroke-width: 1; }
+.histogramme .graduation { fill: var(--encre-3); font: 400 11px var(--police); }
+.histogramme .colonne-donnee { fill: var(--lie); }
+.histogramme .zone-survol { fill: transparent; }
+.histogramme .groupe-colonne:hover .colonne-donnee,
+.histogramme .groupe-colonne:focus-visible .colonne-donnee { fill: #9a2f56; }
+.histogramme .groupe-colonne:focus-visible { outline: none; }
+.histogramme .groupe-colonne:focus-visible .zone-survol { stroke: var(--lie); stroke-width: 2; }
+.histogramme .valeur-etiquette { fill: var(--encre); font: 600 11px var(--police); }
+
+.info-bulle {
+  position: fixed; z-index: 60; max-width: 18rem; padding: 0.45rem 0.7rem;
+  border-radius: var(--rayon); background: var(--encre); color: #fff;
+  font-size: 0.8125rem; line-height: 1.4; pointer-events: none;
+}
+.info-bulle strong { display: block; font-size: 0.9375rem; font-weight: 600; }
+
+.vue-tableau { margin-top: 0.9rem; }
+.vue-tableau summary { cursor: pointer; color: var(--lie); width: fit-content; }
+.vue-tableau .tableau { margin-top: 0.7rem; }
+
+.integrite {
+  display: flex; align-items: center; gap: 0.6rem; margin-top: 2rem;
+  font-size: 0.875rem; color: var(--encre-2);
+}
+.integrite .icone { color: var(--ok); }
+.integrite-ko .icone { color: var(--critique); }
+
+/* ---------------------------------------------------------------------
+   Saisie d'une commande
+   --------------------------------------------------------------------- */
+.saisie-commande { max-width: 62rem; }
+.bloc-client { max-width: 28rem; margin-bottom: 1.5rem; }
+.lignes-commande input, .lignes-commande select {
+  width: 100%; min-height: 2.4rem; padding: 0.4rem 0.6rem;
+  border: 1px solid var(--trait-fort); border-radius: var(--rayon); background: var(--papier); font: inherit;
+}
+.lignes-commande input:focus-visible, .lignes-commande select:focus-visible { outline: 2px solid var(--lie); outline-offset: 0; border-color: var(--lie); }
+.lignes-commande { min-width: 44rem; }
+.lignes-commande .colonne-cuvee { width: 40%; }
+.lignes-commande .colonne-quantite { width: 7.5rem; }
+.lignes-commande input[type="number"] { text-align: right; }
+.stock-ligne { font-size: 0.875rem; color: var(--encre-2); white-space: nowrap; }
+.stock-ligne.depasse { color: var(--critique-texte); font-weight: 600; }
+.sous-total { font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+.retirer-ligne { min-width: 2.4rem; padding: 0.2rem 0.5rem; }
+.recap-commande { display: flex; align-items: baseline; justify-content: flex-end; gap: 1.2rem; }
+.recap-total { font-size: 1.5rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+.fiche { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1.2rem 2rem; margin-bottom: 1.8rem; max-width: 62rem; }
+.fiche dt { font-size: 0.8125rem; color: var(--encre-3); }
+.fiche dd { margin: 0.1rem 0 0; font-weight: 500; }
+
+/* ---------------------------------------------------------------------
+   Import et export CSV
+   --------------------------------------------------------------------- */
+.case { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.5rem; font-weight: 400; }
+.case input[type="checkbox"], .case input[type="radio"] { width: 1.1rem; height: 1.1rem; min-height: 0; margin: 0; accent-color: var(--lie); }
+.choix { margin: 0; padding: 0; border: 0; min-width: 0; }
+.choix legend { padding: 0; margin-bottom: 0.1rem; font-weight: 500; }
+.choix-liste { display: flex; flex-wrap: wrap; gap: 0 1.8rem; }
+.champ input[type="file"] { min-height: 2.75rem; padding: 0.4rem 0.6rem; }
+.champ input[type="file"]::file-selector-button {
+  margin-right: 0.8rem; padding: 0.3rem 0.8rem; border: 1px solid var(--lie); border-radius: var(--rayon);
+  background: var(--papier); color: var(--lie); font: 500 0.875rem/1.2 var(--police); cursor: pointer;
+}
+.champ input[type="file"]::file-selector-button:hover { background: var(--lie-pale); }
+
+.bloc h3 { margin: 1.4rem 0 0.6rem; font-size: 0.9375rem; font-weight: 600; color: var(--verre); }
+.bloc .bloc-entete h3 { margin: 0; }
+.rapport .fiche { margin-bottom: 1rem; }
+.rapport-note { display: flex; align-items: flex-start; gap: 0.5rem; margin-bottom: 0.9rem; color: var(--encre-2); }
+.rapport-note .icone { margin-top: 0.2rem; }
+.liste-motifs { margin: 0; padding: 0; list-style: none; }
+.liste-motifs li + li { margin-top: 0.25rem; }
+.tableau .motif { min-width: 16rem; color: var(--critique-texte); }
+.regles { margin: 0 0 0.4rem; padding-left: 1.1rem; list-style: disc; color: var(--encre-2); }
+.regles li + li { margin-top: 0.4rem; }
+.liens-modeles { display: flex; flex-wrap: wrap; gap: 0.4rem 1.6rem; margin-top: 0.7rem; }
+
+/* ---------------------------------------------------------------------
+   Connexion et pages simples
+   --------------------------------------------------------------------- */
+.page-connexion { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: 100vh; }
+.connexion-marque {
+  display: flex; flex-direction: column; justify-content: flex-end; gap: 0.6rem;
+  padding: 3rem; background: var(--verre); color: var(--verre-texte);
+}
+.connexion-marque h1 { font: 700 2.6rem/1.05 var(--police-titre); color: #fff; }
+.connexion-marque p { max-width: 30ch; color: var(--verre-discret); }
+.connexion-marque .filet { width: 3.5rem; height: 3px; background: var(--or); border: 0; margin: 0 0 0.8rem; }
+.connexion-formulaire { display: flex; align-items: center; justify-content: center; padding: 3rem 1.5rem; }
+.connexion-formulaire form { width: 100%; max-width: 22rem; display: flex; flex-direction: column; gap: 1.1rem; }
+.connexion-formulaire h2 { font-size: 1.25rem; font-weight: 600; }
+.indice-connexion { font-size: 0.8125rem; color: var(--encre-3); }
+
+.page-simple { display: grid; place-items: center; min-height: 100vh; padding: 1.5rem; }
+.boite-simple { max-width: 34rem; padding: 2rem; background: var(--papier); border: 1px solid var(--trait); border-radius: 6px; }
+.boite-simple h1 { margin-bottom: 0.8rem; font: 700 1.5rem/1.2 var(--police-titre); color: var(--verre); }
+.boite-simple p { margin-bottom: 1rem; }
+
+/* Page de vérification */
+.page-verif { padding: 2.2rem 1.5rem 4rem; }
+.verification { max-width: 56rem; margin: 0 auto; }
+.verification .tableau td:first-child { width: 30%; font-weight: 500; }
+.verification .tableau td { vertical-align: top; }
+
+/* ---------------------------------------------------------------------
+   Adaptations : écrans étroits, mouvement réduit, impression
+   --------------------------------------------------------------------- */
+@media (max-width: 64rem) {
+  .tableau-bord { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 52rem) {
+  /* Une colonne de moins : le chiffre d'affaires prend toute la largeur, les repères passent en 2 x 2 */
+  .synthese { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .synthese > .indic-principal { grid-column: 1 / -1; grid-row: auto; border-right: 0; }
+  .synthese > div:nth-child(n + 2) { border-top: 1px solid var(--trait); }
+}
+
+@media (max-width: 60rem) {
+  .structure { grid-template-columns: minmax(0, 1fr); }
+  .barre-laterale { position: static; height: auto; gap: 1rem; padding: 1rem; }
+  .menu { flex-flow: row wrap; gap: 0.2rem 1rem; }
+  .menu-groupe ul { display: flex; flex-wrap: wrap; gap: 0.2rem; }
+  .menu-titre { display: none; }
+  .contenu { padding: 1.5rem 1rem 3rem; }
+  .page-connexion { grid-template-columns: minmax(0, 1fr); }
+  .connexion-marque { padding: 2rem 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+
+@media print {
+  .barre-laterale, .entete-actions, .filtres, .bouton, .lien-evitement { display: none !important; }
+  .structure { display: block; }
+  body { background: #fff; }
+  .contenu { padding: 0; }
+}

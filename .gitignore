@@ -1,0 +1,14 @@
+# Configuration locale (mot de passe MySQL, port différent...) : ne jamais publier
+config/config.local.php
+
+# Éditeurs et systèmes
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Fichiers temporaires
+*.log
+*.bak
+*.zip
+__pycache__/
